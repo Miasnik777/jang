@@ -1,4 +1,5 @@
 <!-- templates/contacts.html -->
+ {% if request.user.is_superuser %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -18,14 +19,15 @@
 
     <main>
         <h1>Наши контакты</h1>
-        
+        name: {{ ser.n }}<br>
         {% if info %}
             Телефон: {{ info.phone }}<br>
             Email: {{ info.email }}<br>
-            name: {{ n }}
+            
         {% else %}
             Нет данных о контактах.
         {% endif %}
+        <a href = "/main/">return</a>
     </main>
 </body>
 </html>

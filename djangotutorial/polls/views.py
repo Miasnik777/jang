@@ -1,6 +1,6 @@
 # views.py
 from django.shortcuts import render
-from .models import MyInfo,Data # если решили использовать модель
+from .models import MyInfo,Data,Mark # если решили использовать модель
 
 def contacts(request):
     # Получаем объект контактной информации из базы данных
@@ -12,5 +12,13 @@ def contacts(request):
     # Передаем данные в шаблон
     return render(request, 'index.html', {'info': info})
 def user(request):
-    n=Data.objects.first()
-    return render(request, 'index.html', {'n': n})
+    ser=Data.objects.first()
+    return render(request, 'index.html', {'ser': ser})
+def mark(request):
+    nn=Mark.objects.all()
+  
+    context = {
+        'nn': nn,
+        
+    }
+    return render(request, 'main.html', context)
